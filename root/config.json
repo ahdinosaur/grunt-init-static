@@ -1,0 +1,11 @@
+{
+  "locals": {
+    "name": "{%= name %}",
+    "description": "{%= description %}",
+    "url": "{%= homepage %}",
+    "keywords": "{%= keywords %}"
+  },
+  "plugins": [
+    "wintersmith-nunjucks"
+  ]
+}
