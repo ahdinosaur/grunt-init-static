@@ -70,8 +70,8 @@ exports.template = function(grunt, init, done) {
       keywords: props.keywords.split(',').map(function (s) { return s.trim(); }),
       private: true,
       dependencies: {
-        "wintersmith": "~2.0.7",
-        "wintersmith-nunjucks": "~0.2.1",
+        "browsernizr": "~1.0.0",
+        "es5-shim": "~2.1.0",
         "lodash": "~2.2.0",
       },
       devDependencies: {
@@ -85,6 +85,8 @@ exports.template = function(grunt, init, done) {
         "grunt-express": "~1.0.0-beta2",
         "grunt-gh-pages": "~0.7.0",
         "grunt-wintersmith": "0.0.2",
+        "wintersmith": "~2.0.7",
+        "wintersmith-nunjucks": "~0.2.1",
         "grunt-contrib-copy": "~0.4.1",
         "grunt-livescript": "~0.5.0",
         "grunt-spritesmith": "~1.10.1",

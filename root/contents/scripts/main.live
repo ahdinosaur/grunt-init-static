@@ -1,3 +1,25 @@
 $(document).ready(->
+
   console.log("hello console world!")
+
+  /*
+  # test for es5 functionality
+  require('browsernizr/feature-detects/es5/array')
+  require('browsernizr/feature-detects/es5/date')
+  require('browsernizr/feature-detects/es5/function')
+  require('browsernizr/feature-detects/es5/object')
+  require('browsernizr/feature-detects/es5/string')
+  */
+
+  Modernizr = require('browsernizr')
+
+  /*
+  # if no es5 support, shim
+  if !( Modernizr.es5array &&
+        Modernizr.es5date &&
+        Modernizr.es5function &&
+        Modernizr.es5object &&
+        Modernizr.es5string)
+  */
+  require('es5-shim')
 )
