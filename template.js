@@ -88,6 +88,7 @@ exports.template = function(grunt, init, done) {
         "wintersmith": "~2.0.7",
         "wintersmith-nunjucks": "~0.2.1",
         "grunt-contrib-copy": "~0.4.1",
+        "LiveScript": "~1.2.0",
         "grunt-livescript": "~0.5.0",
         "grunt-spritesmith": "~1.10.1",
         "grunt-hashres": "~0.3.2",

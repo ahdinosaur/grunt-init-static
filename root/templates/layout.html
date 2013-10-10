@@ -17,6 +17,14 @@
   <![endif]-->
 </head>
 <body>
+  {% block header %}
+  <header>
+    <div class="container">
+      <h1>{{ name }}</h1>
+      <p>{{ description }}</p>
+    </div>
+  </header>
+  {% endblock %}
   {% block body %}{% endblock %}
   <script src="/scripts/main.js"></script>
 </body>

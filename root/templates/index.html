@@ -1,27 +1,23 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-  <header>
-    <div class="container">
-      <h1>{{ name }}</h1>
-    </div>
-  </header>
-  <div class="showcase">
-    {% for feature in features %}
-      <hr />
-      <section class="feature">
+  <div class="posts">
+    {% for post in posts %}
+      <section class="post ad">
+        <img class="thumb {{ "pull-right" if (loop.index0 % 2 == 0) else "pull-left" }}" src="http://placehold.it/300x300" />
         <header>
-          <h2>{{ feature.title }}
-            <span class="text-muted">
-              {{ feature.hook }}
+          <h2>
+            <a class="title" href="{{ post.url }}">
+              {{ post.metadata.title }}
+            </a>
+            <span class="hook">
+              {{ post.metadata.hook }}
             </span>
           </h2>
-          <p>{{ feature.description }}</p>
+          <p>{{ post.metadata.description }}</p>
         </header>
-        <div class="image pull-right">
-          <img src="http://placehold.it/300x300" />
-        </div>
       </section>
+      <hr />
     {% endfor %}
   </div>
 {% endblock %}

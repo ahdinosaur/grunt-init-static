@@ -17,7 +17,10 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
   grunt.registerTask('default', ['preview']);
-  grunt.registerTask('build', ['clean', 'wintersmith', 'sprite', 'less', 'livescript', 'browserify', 'concat', 'copy']);
+  grunt.registerTask('generate', ['wintersmith']);
+  grunt.registerTask('styles', ['less']);
+  grunt.registerTask('scripts', ['livescript', 'browserify'])
+  grunt.registerTask('build', ['clean', 'generate', 'sprite', 'styles', 'scripts', 'concat', 'copy']);
   grunt.registerTask('test', ['jshint']);
   grunt.registerTask('server', ['express']);
   grunt.registerTask('preview', ['build', 'server', 'watch']);
@@ -33,7 +36,7 @@ module.exports = function (grunt) {
     'bower_components/bootstrap/less/',
     'bower_components/font-awesome/less/',
     'styles/',
-    'build/styles/',
+    '/build/styles/',
   ],
       fontFiles = [
     'bower_components/bootstrap/fonts/*',
@@ -127,7 +130,7 @@ module.exports = function (grunt) {
       },
       build: {
         files: {
-          'build/scripts/main.js': ['build/scripts/vendor.js', 'build/scripts/app.js'],
+          'build/scripts/main.js': ['/build/scripts/vendor.js', '/build/scripts/app.js'],
           'build/scripts/html5shiv.js': 'bower_components/html5shiv/dist/html5shiv.js',
         },
       },
@@ -148,14 +151,24 @@ module.exports = function (grunt) {
     },
 
     watch: {
-      build: {
-        files: [
-          'Gruntfile.js',
-          'contents/**',
-          'templates/**',
-          jsVendors,
-        ],
+      all: {
+        files: ['Gruntfile.js'],
         tasks: ['build'],
+      },
+      generate: {
+        files: [
+          '/contents/**',
+          '/templates/**',
+        ],
+        tasks: ['wintersmith'],
+      },
+      styles: {
+        files: ['/styles/**'],
+        tasks: ['styles']
+      },
+      scripts: {
+        files: ['/scripts/**'],
+        tasks: ['scripts']
       },
     },
 
@@ -164,7 +177,7 @@ module.exports = function (grunt) {
         banner: defaultBanner,
         report: 'min',
       },
-      'build/styles/main.css': 'build/styles/main.css',
+      'build/styles/main.css': '/build/styles/main.css',
     },
 
     uglify: {
@@ -172,15 +185,15 @@ module.exports = function (grunt) {
         banner: defaultBanner,
         report: 'min',
       },
-      'build/scripts/main.js': 'build/scripts/main.js',
+      'build/scripts/main.js': '/build/scripts/main.js',
     },
 
     hashres: {
       options: {},
       deploy: {
         src: [
-          'build/scripts/main.js',
-          'build/styles/main.css',
+          '/build/scripts/main.js',
+          '/build/styles/main.css',
         ],
         dest: 'build/index.html',
       },

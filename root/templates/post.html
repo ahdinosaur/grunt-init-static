@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <section class="post">
+    <header>
+      <h2>
+        <a href="{{ page.url }}">
+          {{ page.metadata.title }}
+        </a>
+      </h2>
+      <p>{{ page.metadata.description }}</p>
+    </header>
+    <div class="body">
+      {{ page.html }}
+    </div>
+  </section>
+  </div>
+{% endblock %}

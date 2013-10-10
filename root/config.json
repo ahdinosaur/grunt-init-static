@@ -3,22 +3,14 @@
     "name": "{%= name %}",
     "description": "{%= description %}",
     "url": "{%= homepage %}",
-    "keywords": "{%= keywords %}",
-    "features": [{
-      "title": "sweet kitchen cooking",
-      "hook": "omfg yummm...",
-      "description": "we get delicious food from local suppliers, prepared by members for dinner every day, available always to you."
-    }, {
-      "title": "beautiful rooms",
-      "hook": "created by you",
-      "description": "free expression at its finest. experience what has been done and contribute to what is being done."
-    }, {
-      "title": "stable utilities",
-      "hook": "surf the web while you pee",
-      "description": "rest assured, there are facilities available at your disposal."
-    }]
+    "keywords": "{%= keywords %}"
   },
   "plugins": [
-    "wintersmith-nunjucks"
-  ]
+    "wintersmith-nunjucks",
+    "./plugins/livescript.coffee",
+    "./plugins/paginator.ls"
+  ],
+  "require": {
+    "_": "lodash"
+  }
 }
