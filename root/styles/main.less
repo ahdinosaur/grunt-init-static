@@ -1,0 +1,35 @@
+@import "bootstrap.less";
+@import "font-awesome.less";
+@FontAwesomePath: "../fonts";
+
+body > header {
+  .jumbotron;
+}
+
+.showcase {
+  .container;
+}
+
+.feature {
+  .row;
+  > header {
+    .make-md-column(7);
+    > h2 {
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+      @media (min-width: 768px) {
+        font-size: 50px;
+      }
+    }
+    > p {
+      .lead;
+    }
+    @media (min-width: 992px) {
+      margin-top: 120px;
+    }
+  }
+  > .image {
+    .make-md-column(5);
+  }
+}

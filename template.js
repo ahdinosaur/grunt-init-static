@@ -97,6 +97,7 @@ exports.template = function(grunt, init, done) {
         "deamdify": "~0.1.1",
         "brfs": "0.0.8",
         "deglobalify": "0.0.1",
+        "grunt-contrib-jshint": "~0.6.4",
       },
       npm_test: '',
       node_version: '>= 0.8.0',

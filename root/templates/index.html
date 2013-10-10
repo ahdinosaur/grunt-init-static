@@ -1,10 +1,27 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-  <div class="jumbotron">
+  <header>
     <div class="container">
       <h1>{{ name }}</h1>
-      <p>{{ description }}</p>
     </div>
+  </header>
+  <div class="showcase">
+    {% for feature in features %}
+      <hr />
+      <section class="feature">
+        <header>
+          <h2>{{ feature.title }}
+            <span class="text-muted">
+              {{ feature.hook }}
+            </span>
+          </h2>
+          <p>{{ feature.description }}</p>
+        </header>
+        <div class="image pull-right">
+          <img src="http://placehold.it/300x300" />
+        </div>
+      </section>
+    {% endfor %}
   </div>
 {% endblock %}

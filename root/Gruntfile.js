@@ -14,9 +14,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-spritesmith');
   grunt.loadNpmTasks('grunt-hashres');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   grunt.registerTask('default', ['preview']);
   grunt.registerTask('build', ['clean', 'wintersmith', 'sprite', 'less', 'livescript', 'browserify', 'concat', 'copy']);
+  grunt.registerTask('test', ['jshint']);
   grunt.registerTask('server', ['express']);
   grunt.registerTask('preview', ['build', 'server', 'watch']);
   grunt.registerTask('minify', ['cssmin', 'uglify']);
@@ -30,7 +32,7 @@ module.exports = function (grunt) {
       lessPaths = [
     'bower_components/bootstrap/less/',
     'bower_components/font-awesome/less/',
-    'contents/styles/',
+    'styles/',
     'build/styles/',
   ],
       fontFiles = [
@@ -57,14 +59,14 @@ module.exports = function (grunt) {
         filter: 'isFile',
       },
       scripts: {
-        src: 'contents/scripts/**/*.js',
+        src: 'scripts/**/*.js',
         dest: 'build/scripts/',
       },
     },
 
     sprite: {
       build: {
-        src: 'contents/media/sprites/*.png',
+        src: 'media/sprites/*.png',
         destImg: 'build/media/spritesheet.png',
         destCSS: 'build/styles/mysprites.less',
       },
@@ -76,7 +78,7 @@ module.exports = function (grunt) {
         compress: false,
       },
       build: {
-        src: 'contents/styles/main.less',
+        src: 'styles/main.less',
         dest: 'build/styles/main.css',
       },
     },
@@ -84,7 +86,7 @@ module.exports = function (grunt) {
     livescript: {
       build: {
         expand: true,
-        cwd: 'contents/scripts/',
+        cwd: 'scripts/',
         src: '**/*.live',
         dest: 'build/scripts/',
         ext: '.js',
@@ -129,6 +131,10 @@ module.exports = function (grunt) {
           'build/scripts/html5shiv.js': 'bower_components/html5shiv/dist/html5shiv.js',
         },
       },
+    },
+
+    jshint: {
+      all: ['Gruntfile.js', 'config.json', 'scripts/**/*.js'],
     },
 
     express: {
